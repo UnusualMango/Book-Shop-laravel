@@ -10,27 +10,27 @@
       <thead>
         <tr>
           <th>ID:</th>
-          <th>{{$book->book_id}}</th>
+          <td>{{$book->book_id}}</td>
         </tr>
 
         <tbody>
           <tr>
-            <td>Year of publishing:</td>
+            <th>Year of publishing:</th>
             <td>{{$book->year}}</td>
           </tr>
 
           <tr>
-            <td>Price:</td>
+            <th>Price:</th>
             <td>{{$book->price}}</td>
           </tr>
 
           <tr>
-            <td>Count:</td>
+            <th>Count:</th>
             <td>{{$book->count}}</td>
           </tr>
 
           <tr>
-            <td>Publisher:</td>
+            <th>Publisher:</th>
             <td>
               <?
               $results = DB::select('select * from publishers');
@@ -47,7 +47,7 @@
           </tr>
 
           <tr>
-            <td>Supplier: </td>
+            <th>Supplier: </th>
             <td>
               <?
               $results = DB::select('select * from suppliers');
@@ -64,7 +64,7 @@
           </tr>
 
           <tr>
-            <td>Genre: </td>
+            <th>Genre: </th>
             <td>
               <?
               $results = DB::select('select * from genre');
