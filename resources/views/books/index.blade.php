@@ -15,18 +15,24 @@
       </tr>
 
       <tbody>
+        <?php foreach ($books as $book): ?>
 
         <tr>
-          <td>1</td>
-          <td>Name</td>
-          <td>123</td>
-          <td>1</td>
+          <td>{{$book->book_id}}</td>
+          <td>{{$book->name}}</td>
+          <td>{{$book->price}}</td>
+          <td>{{$book->count}}</td>
           <td>
-            <a href="#" class="btn btn-info" role="button">show</a>
-            <a href="#" class="btn btn-success" role="button">edit</a>
-            <a href="#" class="btn btn-danger" role="button">delete</a>
+            <a href="{{ route('books.show', $book->book_id)}}" class="btn btn-info" role="button">show</a>
+            <a href="{{ route('books.edit', $book->book_id)}}" class="btn btn-success" role="button">edit</a>
+
+            {!! Form::open(["method"=>"DELETE", 'route' => ['books.destroy', $book->book_id]]) !!}
+            <button onclick="return confirm('Delete this book?')" class="btn btn-danger" role="button">delete</button>
+            {!! Form::close() !!}
           </td>
         </tr>
+
+        <?php endforeach; ?>
 
       </tbody>
     </thead>

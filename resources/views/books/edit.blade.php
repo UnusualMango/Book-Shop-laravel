@@ -2,33 +2,35 @@
 
 @section('content')
 <div class="container">
-  <h1>Create Book</h1>
+  <h1>Edit Book - {{$book->name}}</h1>
 
 @include('errors')
 
   <div class="row">
     <div class="col-md-12">
-      {!! Form::open(['route' => 'books.store']) !!}
+      {!! Form::open(['route' => ['books.update', $book->book_id],"method"=>"PUT"]) !!}
       <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" class="form-control" name="name">
+        <input type="text" class="form-control" name="name" value="{{$book->name}}">
 
-        <label for="year">Year:</label>
-        <input type="number" class="form-control" name="year">
+        <label for="year">Year of publishing:</label>
+        <input type="number" class="form-control" name="year" value="{{$book->year}}">
 
         <label for="count">Count:</label>
-        <input type="number" class="form-control" name="count">
+        <input type="number" class="form-control" name="count" value="{{$book->count}}">
 
         <label for="price">Price:</label>
-        <input type="number" class="form-control" name="price">
+        <input type="number" class="form-control" name="price" value="{{$book->price}}">
 
         <label for="publisher_id">Publisher:</label>
         <select class="form-control" name="publisher_id">
             <?php
             $results = DB::select('select * from publishers');
+
             foreach ($results as $value): ?>
-                <option value="<?=$value->publisher_id;?>"><?=$value->name;?></option>
+              <option value="<?=$value->publisher_id?>" <?php if ($book->publisher_id == $value->publisher_id) echo 'selected';?>><?=$value->name;?></option>
             <?php endforeach; ?>
+
         </select>
 
         <label for="supplier_id">Supplier:</label>
@@ -36,7 +38,7 @@
             <?php
             $results = DB::select('select * from suppliers');
             foreach ($results as $value): ?>
-                <option value="<?=$value->supplier_id;?>"><?=$value->name;?></option>
+                <option value="<?=$value->supplier_id;?>" <?php if ($book->supplier_id == $value->supplier_id) echo 'selected';?>><?=$value->name;?></option>
             <?php endforeach; ?>
         </select>
 
@@ -45,7 +47,7 @@
             <?php
             $results = DB::select('select * from genre');
             foreach ($results as $value): ?>
-                <option value="<?=$value->genre_id;?>"><?=$value->genre;?></option>
+                <option value="<?=$value->genre_id;?>" <?php if ($book->genre_id == $value->genre_id) echo 'selected';?>><?=$value->genre;?></option>
             <?php endforeach; ?>
         </select>
 

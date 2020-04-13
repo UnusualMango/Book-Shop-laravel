@@ -9,8 +9,9 @@ class Books extends Model
 {
   // выключение создания полей updated_at и created_at в БД
   public $timestamps = false;
+  protected $primaryKey = 'book_id';
   // массив для полей, которые могут заполнятся
-  protected $fillable = ['name','year','count','price'];
+  protected $fillable = ['name','year','count','price','publisher_id','supplier_id','genre_id'];
 
   public function Publishers()
   {
