@@ -1,6 +1,9 @@
 <?php
 
-// Роуты для книг
+
+/*---------------/
+/-Роуты для книг-/
+/--------------*/
 
 // роут главной страницы для книг
 Route::get('books', 'booksController@index')->name('books.index');
@@ -15,3 +18,23 @@ Route::put('book/{book_id}/update','booksController@update')->name('books.update
 Route::get('books/{book_id}/show', 'booksController@show')->name('books.show');
 // роут для удаления
 Route::delete('books/{book_id}/destroy', 'booksController@destroy')->name('books.destroy');
+
+
+/*---------------/
+/-Роуты для клиентов-/
+/--------------*/
+
+
+// роут главной страницы для клиентов
+Route::get('clients', 'clientsController@index')->name('clients.index');
+// роут создания клиента
+Route::get('clients/create', 'clientsController@create')->name('clients.create');
+// роут для записи клиента в БД
+Route::post('clients/store', 'clientsController@store')->name('clients.store');
+// роут для редактирования данных клиента
+Route::get('clients/{client_id}/edit', 'clientsController@edit')->name('clients.edit');
+Route::put('clients/{client_id}/update','clientsController@update')->name('clients.update');
+// роут для показа
+Route::get('clients/{client_id}/show', 'clientsController@show')->name('clients.show');
+// роут для удаления
+Route::delete('clients/{client_id}/destroy', 'clientsController@destroy')->name('clients.destroy');
