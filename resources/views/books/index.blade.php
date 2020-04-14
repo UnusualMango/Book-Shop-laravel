@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-  <h1>Books
+  <h2>Books
     <a href="{{ route('books.create')}}" class="btn btn-success">Create</a>
-  </h1>
+  </h2>
     <table class="table table-striped">
     <thead>
       <tr>

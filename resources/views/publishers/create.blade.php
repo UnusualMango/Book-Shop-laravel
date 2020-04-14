@@ -2,25 +2,19 @@
 
 @section('content')
 <div class="container">
-  <h2>Add Person</h2>
+  <h2>Create publisher</h2>
 
 @include('errors')
 
   <div class="row">
     <div class="col-md-12">
-      {!! Form::open(['route' => 'clients.store']) !!}
+      {!! Form::open(['route' => 'publishers.store']) !!}
       <div class="form-group">
-        <label for="fullname">Fullname:</label>
-        <input type="text" class="form-control" name="fullname">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" name="name">
 
         <label for="city">City:</label>
         <input type="text" class="form-control" name="city">
-
-        <label for="adress">Address:</label>
-        <input type="text" class="form-control" name="adress">
-
-        <label for="phone">Phone:</label>
-        <input type="text" class="form-control" name="phone">
 
         <br>
         <button class="btn btn-success">Submit</button>

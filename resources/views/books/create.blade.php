@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-  <h1>Create Book</h1>
+  <h2>Create Book</h2>
 
 @include('errors')
 
@@ -13,7 +13,7 @@
         <label for="name">Name:</label>
         <input type="text" class="form-control" name="name">
 
-        <label for="year">Year:</label>
+        <label for="year">Year of publishing:</label>
         <input type="number" class="form-control" name="year">
 
         <label for="count">Count:</label>
@@ -43,7 +43,7 @@
         <label for="genre_id">Genre:</label>
         <select class="form-control" name="genre_id">
             <?php
-            $results = DB::select('select * from genre');
+            $results = DB::select('select * from genres');
             foreach ($results as $value): ?>
                 <option value="<?=$value->genre_id;?>"><?=$value->genre;?></option>
             <?php endforeach; ?>

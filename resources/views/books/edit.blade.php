@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-  <h1>Edit Book - {{$book->name}}</h1>
+  <h2>Edit Book - {{$book->name}}</h2>
 
 @include('errors')
 
@@ -45,7 +45,7 @@
         <label for="genre_id">Genre:</label>
         <select class="form-control" name="genre_id">
             <?php
-            $results = DB::select('select * from genre');
+            $results = DB::select('select * from genres');
             foreach ($results as $value): ?>
                 <option value="<?=$value->genre_id;?>" <?php if ($book->genre_id == $value->genre_id) echo 'selected';?>><?=$value->genre;?></option>
             <?php endforeach; ?>

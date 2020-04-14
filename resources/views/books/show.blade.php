@@ -4,7 +4,7 @@
 
 @include('errors')
 <div class="container">
-  <h1>{{$book->name}}</h1>
+  <h2>{{$book->name}}</h2>
     <div class="col-md-12">
       <table class="table table-striped">
       <thead>
@@ -67,7 +67,7 @@
             <th>Genre: </th>
             <td>
               <?
-              $results = DB::select('select * from genre');
+              $results = DB::select('select * from genres');
 
               foreach ($results as $result)
               {

@@ -17,4 +17,14 @@ class Books extends Model
   {
       return $this->belongsTo('App\Publishers');
   }
+
+  public function Suppliers()
+  {
+      return $this->belongsTo('App\Suppliers');
+  }
+
+  public function Genres()
+  {
+      return $this->belongsTo('App\Genres');
+  }
 }

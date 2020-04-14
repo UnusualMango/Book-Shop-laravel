@@ -4,12 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Suppliers extends Model
+class Genres extends Model
 {
+  // выключение создания полей updated_at и created_at в БД
   public $timestamps = false;
-  protected $primaryKey = 'supplier_id';
+  protected $primaryKey = 'genre_id';
   // массив для полей, которые могут заполнятся
-  protected $fillable = ['name','email','phone'];
+  protected $fillable = ['genre'];
 
   public function Books()
   {

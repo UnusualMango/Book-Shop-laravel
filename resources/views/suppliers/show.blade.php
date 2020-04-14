@@ -4,29 +4,24 @@
 
 @include('errors')
 <div class="container">
-  <h2>{{$client->fullname}}</h2>
+  <h2>{{$supplier->name}}</h2>
     <div class="col-md-12">
       <table class="table table-striped">
       <thead>
         <tr>
           <th>ID:</th>
-          <td>{{$client->client_id}}</td>
+          <td>{{$supplier->supplier_id}}</td>
         </tr>
 
         <tbody>
           <tr>
-            <th>City:</th>
-            <td>{{$client->city}}</td>
-          </tr>
-
-          <tr>
-            <th>Address:</th>
-            <td>{{$client->adress}}</td>
+            <th>Email:</th>
+            <td>{{$supplier->email}}</td>
           </tr>
 
           <tr>
             <th>Phone:</th>
-            <td>{{$client->phone}}</td>
+            <td>{{$supplier->phone}}</td>
           </tr>
         </tbody>
       </thead>

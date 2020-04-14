@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-  <h1>Edit person - {{$client->fullname}}</h1>
+  <h2>Edit person - {{$client->fullname}}</h2>
 
 @include('errors')
 
