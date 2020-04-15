@@ -27,4 +27,9 @@ class Books extends Model
   {
       return $this->belongsTo('App\Genres');
   }
+
+  public function Authors()
+  {
+      return $this->belongsTo('App\Authors');
+  }
 }

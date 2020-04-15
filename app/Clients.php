@@ -11,4 +11,9 @@ class Clients extends Model
   protected $primaryKey = 'client_id';
   // массив для полей, которые могут заполнятся
   protected $fillable = ['fullname','city','adress','phone'];
+
+  public function Orders()
+  {
+      return $this->belongsTo('App\Orders');
+  }
 }

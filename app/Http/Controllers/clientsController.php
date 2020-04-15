@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Clients;
+use App\Orders;
 use App\Http\Requests\createClientsRequest;
 use App\Http\Requests\updateClientsRequest;
 
@@ -67,5 +68,12 @@ class clientsController extends Controller
     $selectedClient = Clients::find($client_id);
 
     return view('clients.show', ['client' => $selectedClient]);
+  }
+
+  public function clientOrders($client_id)
+  {
+    $clients = Clients::find($client_id);
+    $orders = Orders::where('client_id',  $client_id)-> get();
+    return view('clients.clientOrders' , ['orders' => $orders , 'clients' => $clients]);
   }
 }

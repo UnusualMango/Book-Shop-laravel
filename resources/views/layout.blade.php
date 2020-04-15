@@ -18,12 +18,14 @@
   <body>
     <div class="p-3 mb-2 bg-success text-light">
       <h1>BookShop</h1>
-      <div class="offset-md-8 ">
+      <div class="offset-md-5 ">
         <a href="{{ route('books.index')}}" class="col-md-2 text-light" >Books</a>
+        <a href="{{ route('authors.index')}}" class="col-md-2 text-light" >Authors</a>
         <a href="{{ route('genres.index')}}" class="col-md-2 text-light" >Genres</a>
         <a href="{{ route('publishers.index')}}" class="col-md-2 text-light" >Publishers</a>
         <a href="{{ route('suppliers.index')}}" class="col-md-2 text-light" >Suppliers</a>
         <a href="{{ route('clients.index')}}" class="col-md-2 text-light" >Clients</a>
+        <a href="{{ route('orders.index')}}" class="col-md-2 text-light" >Orders</a>
       </div>
     </div>
     @yield('content')

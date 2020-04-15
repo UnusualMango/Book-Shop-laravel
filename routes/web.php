@@ -20,6 +20,28 @@ Route::get('books/{book_id}/show', 'booksController@show')->name('books.show');
 Route::delete('books/{book_id}/destroy', 'booksController@destroy')->name('books.destroy');
 
 
+
+/*---------------/
+/-Роуты для авторов-/
+/--------------*/
+
+
+// роут главной страницы для авторов
+Route::get('authors', 'authorsController@index')->name('authors.index');
+// роут создания автора
+Route::get('authors/create', 'authorsController@create')->name('authors.create');
+// роут для записи автора в БД
+Route::post('authors/store', 'authorsController@store')->name('authors.store');
+// роут для редактирования данных автора
+Route::get('authors/{author_id}/edit', 'authorsController@edit')->name('authors.edit');
+Route::put('authors/{author_id}/update','authorsController@update')->name('authors.update');
+// роут для показа информации
+Route::get('authors/{author_id}/show', 'authorsController@show')->name('authors.show');
+// роут для удаления
+Route::delete('authors/{author_id}/destroy', 'authorsController@destroy')->name('authors.destroy');
+
+
+
 /*---------------/
 /-Роуты для клиентов-/
 /--------------*/
@@ -38,6 +60,30 @@ Route::put('clients/{client_id}/update','clientsController@update')->name('clien
 Route::get('clients/{client_id}/show', 'clientsController@show')->name('clients.show');
 // роут для удаления
 Route::delete('clients/{client_id}/destroy', 'clientsController@destroy')->name('clients.destroy');
+// роут главной страницы для конкретного заказа клиента
+Route::get('clients/{client_id}/clientOrders', 'clientsController@clientOrders')->name('client.orders');
+
+
+/*---------------/
+/-Роуты для заказов-/
+/--------------*/
+
+
+// роут главной страницы для всех заказов
+Route::get('orders', 'ordersController@index')->name('orders.index');
+// роут создания заказа
+Route::get('orders/create', 'ordersController@create')->name('orders.create');
+// роут для записи заказа в БД
+Route::post('orders/store', 'ordersController@store')->name('orders.store');
+// роут для редактирования данных заказа
+Route::get('orders/{order_id}/edit', 'ordersController@edit')->name('orders.edit');
+Route::put('orders/{order_id}/update','ordersController@update')->name('orders.update');
+// роут для показа
+Route::get('orders/{order_id}/show', 'ordersController@show')->name('orders.show');
+// роут для удаления
+Route::delete('orders/{order_id}/destroy', 'ordersController@destroy')->name('orders.destroy');
+// роут для предоставления подробной информации по заказу
+Route::get('orders/{order_id}/info', 'ordersController@info')->name('orders.info');
 
 
 /*---------------/
@@ -81,13 +127,13 @@ Route::delete('publishers/{publisher_id}/destroy', 'publishersController@destroy
 /--------------*/
 
 
-// роут главной страницы для клиентов
+// роут главной страницы для поставщиков
 Route::get('suppliers', 'suppliersController@index')->name('suppliers.index');
-// роут создания клиента
+// роут создания поставщика
 Route::get('suppliers/create', 'suppliersController@create')->name('suppliers.create');
-// роут для записи клиента в БД
+// роут для записи поставщика в БД
 Route::post('suppliers/store', 'suppliersController@store')->name('suppliers.store');
-// роут для редактирования данных клиента
+// роут для редактирования данных поставщика
 Route::get('suppliers/{supplier_id}/edit', 'suppliersController@edit')->name('suppliers.edit');
 Route::put('suppliers/{supplier_id}/update','suppliersController@update')->name('suppliers.update');
 // роут для показа
