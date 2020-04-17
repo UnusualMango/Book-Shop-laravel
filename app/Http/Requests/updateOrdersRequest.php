@@ -25,6 +25,9 @@ class updateOrdersRequest extends FormRequest
     {
         return [
           'client_id'=> 'required',
+          'book_id'=> 'required',
+          'book_price'=> 'required',
+          'count'=> 'required',
           'order_date'=> 'required|date',
           'execution_date' =>'nullable|date'
         ];

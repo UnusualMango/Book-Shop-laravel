@@ -20,7 +20,6 @@
           <td>{{$client->client_id}}</td>
           <td>{{$client->fullname}}</td>
           <td>
-            <a href="{{ route('client.orders', $client->client_id)}}" class="btn btn-warning" role="button">orders</a>
             <a href="{{ route('clients.show', $client->client_id)}}" class="btn btn-info" role="button">show</a>
             <a href="{{ route('clients.edit', $client->client_id)}}" class="btn btn-success" role="button">edit</a>
 

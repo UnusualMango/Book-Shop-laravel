@@ -31,6 +31,7 @@ class createBooksRequest extends FormRequest
           'publisher_id' => 'required',
           'supplier_id' => 'required',
           'genre_id' => 'required',
+          'author_id' => 'required',
         ];
     }
 }

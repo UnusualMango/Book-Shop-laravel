@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Orders;
+use App\Ordered;
 use App\Clients;
 use App\Http\Requests\createOrdersRequest;
 use App\Http\Requests\updateOrdersRequest;
@@ -35,8 +36,9 @@ class ordersController extends Controller
   public function edit($order_id)
   {
     $selectedOrder = Orders::find($order_id);
+    $selectedOrdered = Ordered::find($order_id);
 
-    return view('orders.edit', ['order' => $selectedOrder]);
+    return view('orders.edit', ['order' => $selectedOrder, 'ordered'=>$selectedOrdered]);
   }
 
   //обновление записи
@@ -48,6 +50,10 @@ class ordersController extends Controller
     $selectedOrder->fill($request->all());
     $selectedOrder->save();
 
+    $selectedOrdered = Ordered::find($order_id);
+    $selectedOrdered->fill($request->all());
+    $selectedOrdered->save();
+
     return redirect()->route('orders.index');
   }
 
@@ -55,8 +61,17 @@ class ordersController extends Controller
   // Функция сохранения записи в БД
   public function store(createOrdersRequest $request)
   {
+    $order = Orders::create($request->all());
+    $orderId = $order->order_id;
 
-    Orders::create($request->all());
+    $ordered = new Ordered;
+
+    $ordered->order_id = $orderId;
+    $ordered->book_id = $request->book_id;
+    $ordered->book_price = $request->book_price;
+    $ordered->count = $request->count;
+
+    $ordered->save();
 
     return redirect()->route('orders.index');
 

@@ -27,6 +27,23 @@
         <label for="execution_date">Execution date:</label>
         <input type="date" class="form-control" name="execution_date" value="{{$order->execution_date}}">
 
+        <label for="execution_date">Book:</label>
+        <select class="form-control" name="book_id">
+            <?php
+            $books = DB::select('select * from books');
+
+            foreach ($books as $book): ?>
+              <option value="<?=$book->book_id?>" <?php if ($ordered->book_id == $book->book_id) echo 'selected';?>><?=$book->name;?></option>
+            <?php endforeach; ?>
+        </select>
+
+
+        <label for="count">Count:</label>
+        <input type="number" class="form-control" name="count" value="{{$ordered->count}}">
+
+        <label for="book_price">Price:</label>
+        <input type="number" class="form-control" name="book_price" value="{{$ordered->book_price}}">
+
 
         <br>
 

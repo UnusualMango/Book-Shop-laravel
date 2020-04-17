@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Books;
+use App\AuthorsBooks;
+use App\Authors;
 use App\Http\Requests\createBooksRequest;
 use App\Http\Requests\updateBookRequest;
 
@@ -29,8 +31,9 @@ class booksController extends Controller
     public function edit($book_id)
     {
       $selectedBook = Books::find($book_id);
+      $selectedAuthorBooks = AuthorsBooks::find($book_id);
 
-      return view('books.edit', ['book' => $selectedBook]);
+      return view('books.edit', ['book' => $selectedBook, 'authorsbooks'=>$selectedAuthorBooks]);
     }
 
     //обновление записи
@@ -42,6 +45,10 @@ class booksController extends Controller
       $selectedBook->fill($request->all());
       $selectedBook->save();
 
+      $selectedAuthorBooks = AuthorsBooks::find($book_id);
+      $selectedAuthorBooks->fill($request->all());
+      $selectedAuthorBooks->save();
+
       return redirect()->route('books.index');
     }
 
@@ -49,25 +56,16 @@ class booksController extends Controller
     // Функция сохранения записи в БД
     public function store(createBooksRequest $request)
     {
+      $book = Books::create($request->all());
+      $bookId = $book->book_id;
 
-      Books::create($request->all());
+      $authorsBooks = new AuthorsBooks;
 
-      /*
-       создаём экземпляр модели Books и вставляем в поля данные из формы
+      $authorsBooks->book_id = $bookId;
+      $authorsBooks->author_id = $request->author_id;
 
-      $book = new Books;
-      $book->fill($request->all());
+      $authorsBooks->save();
 
-      встроенная функция ORM для сохранения записи
-      при использовании функции save() или create(), так же
-      создаются поля в бд под названием updated_at и created_at.
-      Чтобы этого не было, нужно в классе модели задать свойство
-      public $timestamps = false;
-
-      $book->save();
-      */
-
-      // перенаправление на book/index.blade.php
       return redirect()->route('books.index');
 
     }

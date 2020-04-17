@@ -37,6 +37,7 @@
           <td>{{$order->execution_date}}</td>
 
           <td>
+            <a href="{{ route('orders.info', $order->order_id)}}" class="btn btn-info" role="button">info</a>
             <a href="{{ route('orders.edit', $order->order_id)}}" class="btn btn-success" role="button">edit</a>
 
             {!! Form::open(["method"=>"DELETE", 'route' => ['orders.destroy', $order->order_id]]) !!}

@@ -80,6 +80,22 @@
             </td>
           </tr>
 
+          <tr>
+            <th>Authors: </th>
+            <td>
+              <?php
+              $authorsbooks = DB::select("select * from authorsbooks where book_id = $book->book_id");
+              foreach ($authorsbooks as $authorsbook): ?>
+
+                  <?
+                    $authors = DB::select("select * from authors where author_id = $authorsbook->author_id");
+                    foreach ($authors as $author) {
+                      echo $author->authorname;
+                    }
+                  ?>
+                <?php endforeach; ?>
+            </td>
+          </tr>
         </tbody>
       </thead>
     </div>

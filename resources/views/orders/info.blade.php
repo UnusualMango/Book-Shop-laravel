@@ -31,9 +31,23 @@
             <th>Price:</th>
             <th>Count:</th>
           <tbody>
-            <td>Книга</td>
-            <td>Цена</td>
-            <td>Количество</td>
+            <?php
+            $ordereds = DB::select("select * from ordered where order_id = $order->order_id");
+            foreach ($ordereds as $ordered): ?>
+
+            <tr>
+              <td>
+                <?
+                  $books = DB::select("select * from books where book_id = $ordered->book_id");
+                  foreach ($books as $book) {
+                    echo $book->name;
+                  }
+                ?>
+              </td>
+              <td>{{$ordered->book_price}}</td>
+              <td>{{$ordered->count}}</td>
+            <tr>
+              <?php endforeach; ?>
           </tbody>
         </thead>
       </table>

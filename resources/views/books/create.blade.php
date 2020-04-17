@@ -13,6 +13,15 @@
         <label for="name">Name:</label>
         <input type="text" class="form-control" name="name">
 
+        <label for="author">Author:</label>
+        <select class="form-control" name="author_id">
+            <?php
+            $authors = DB::select('select * from authors');
+            foreach ($authors as $author): ?>
+                <option value="<?=$author->author_id;?>"><?=$author->authorname;?></option>
+            <?php endforeach; ?>
+        </select>
+
         <label for="year">Year of publishing:</label>
         <input type="number" class="form-control" name="year">
 

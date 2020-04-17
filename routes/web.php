@@ -60,8 +60,6 @@ Route::put('clients/{client_id}/update','clientsController@update')->name('clien
 Route::get('clients/{client_id}/show', 'clientsController@show')->name('clients.show');
 // роут для удаления
 Route::delete('clients/{client_id}/destroy', 'clientsController@destroy')->name('clients.destroy');
-// роут главной страницы для конкретного заказа клиента
-Route::get('clients/{client_id}/clientOrders', 'clientsController@clientOrders')->name('client.orders');
 
 
 /*---------------/
@@ -140,3 +138,8 @@ Route::put('suppliers/{supplier_id}/update','suppliersController@update')->name(
 Route::get('suppliers/{supplier_id}/show', 'suppliersController@show')->name('suppliers.show');
 // роут для удаления
 Route::delete('suppliers/{supplier_id}/destroy', 'suppliersController@destroy')->name('suppliers.destroy');
+
+
+/*---------------------/
+/-Дополнительные роут-/
+/-------------------*/
